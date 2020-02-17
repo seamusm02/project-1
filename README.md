@@ -29,7 +29,7 @@ must be moved one at a time, stacking smaller discs on top of larger discs.
   * Classes for Disc, Tower, and Gameboard
 * Main js file which acts as an entry point into the application and includes all class files
 * Test js file which is used to test the game logic without a UI
-* JSDoc documentation for the source files located [here](https://github.com/seamusm02/project-1/jsdoc/)
+* JSDoc documentation for the source files located [here](https://seamusm02.github.io/project-1/jsdoc/)
 
 ### Technologies Used
 * JavaScript
