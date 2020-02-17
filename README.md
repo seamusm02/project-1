@@ -31,8 +31,11 @@ must be moved one at a time, stacking smaller discs on top of larger discs.
 ### Features   
 * Class-based design
   * Classes for Disc, Tower, and Gameboard
-* Main js file which acts as an entry point into the application and includes all class files
-* Test js file which is used to test the game logic without a UI
+  * Strict Encapsulation - Private properties ONLY!  Getters and Setters employed exclusively for the main 
+    application's consumption.
+  * Extensive error checking with TRY / THROW / CATCH
+* Main js file acts as an entry point into the application and includes all class files
+* Test js file for testing game logic without a UI
 * JSDoc documentation for the source files located [here](https://seamusm02.github.io/project-1/jsdoc/)
 
 ### Technologies Used
