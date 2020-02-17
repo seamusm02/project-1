@@ -1,46 +1,44 @@
-/* // Create tower 'A'
+console.log("Create 3 towers and assign them to positions 'A', 'B', and 'C'");
+// Create tower 'A'
 let towerA = new Tower('a');
-console.log(`Position of towerA is ${towerA.getPosition()}`);
-
-//Create tower 'B'
+// Create tower 'B'
 let towerB = new Tower('b');
-console.log(`Position of towerb is ${towerB.getPosition()}`);
-
-//Create tower 'C'
+// Create tower 'C'
 let towerC = new Tower('c');
-console.log(`Position of towerc is ${towerC.getPosition()}`);
+console.log(towerA, towerB, towerC);
+console.log("");
 
+console.log("Create three discs with descending widths and different colors");
 //Create disc1 
 let disc1 = new Disc(50, 'red');
-console.log(`The width and color of disc1 are '${disc1.getWidth()}' and '${disc1.getColor()}'`);
-console.log(disc1);
-
 //Create disc2 
-let disc2 = new Disc(40);
-console.log(`The width of disc2 is ${disc2.getWidth()}`);
-
+let disc2 = new Disc(40, 'blue');
 //Create disc3
-let disc3 = new Disc(30);
-console.log(`The width of disc3 is ${disc3.getWidth()}`);
+let disc3 = new Disc(30, 'green');
+console.log(disc1, disc2, disc3);
+console.log("");
 
-//Add discs 1,2, and 3 to towerA 
+//Add discs 1, 2, and 3 to towerA
+console.log("Add discs 1, 2, and 3 to towerA");
 towerA.addDisc(disc1); 
-towerA.addDisc(disc2);
+towerA.addDisc(disc2); 
 towerA.addDisc(disc3);
-
-// Display discs on towerA
-console.log(towerA.displayDiscs());
-
-// Remove a disc from towerA
-towerA.removeDisc();
+console.log(towerA, towerB, towerC);
+console.log(""); 
 
 // Remove a disc from towerA
+console.log("Remove a disc from towerA"); 
 towerA.removeDisc();
+console.log("Remove a disc from towerA"); 
+towerA.removeDisc();
+console.log(towerA);
+console.log("");
 
-// Display discs on towerA
-console.log(towerA.displayDiscs()); */
-
+console.log("Create a new gameboard with 3 discs");
 let gameBoard = new Gameboard(3);
+console.log(gameBoard);
+
+console.log("Move the 3 discs in correct sequence from tower A to tower C...");
 
 // Move a disc from tower A to tower C
 gameBoard.moveDisc(gameBoard.getTower('A'), gameBoard.getTower('C'));
@@ -71,7 +69,6 @@ gameBoard.getNumberOfMoves());
 gameBoard.moveDisc(gameBoard.getTower('B'), gameBoard.getTower('C'));
 console.log("isWinner === " + gameBoard.isWinner() + ", number of moves = " + 
 gameBoard.getNumberOfMoves());
-console.log("Winning time = " + gameBoard.getWinningTime());
 
 // Move the top disc from tower A to tower C
 gameBoard.moveDisc(gameBoard.getTower('A'), gameBoard.getTower('C'));
