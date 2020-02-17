@@ -138,9 +138,12 @@ class Gameboard {
             discToMove = fromTower.getTopDisc();
 
             toTower.addDisc(discToMove); // Add the top disc object to the destination tower
-            fromTower.removeDisc();      // Remove the top disc object from the source tower
+            fromTower.removeDisc();      // Remove the top disc object from the source tower            
             
+            if (this.isWinner()) this._endTime = Date.now(); // Stop game clock if the user has won
+
             this._numMoves++;            // Increment the number of moves in the current game
+            
         }
         catch (err) {
             console.error(err);
@@ -190,15 +193,9 @@ class Gameboard {
      * 
      * @return {boolean}
      */
-    isWinner() {
-        
+    isWinner() {  
         // Do the number of discs on tower "C" equal the number of discs in the game?
-        if (this.getTower("C").getNumberOfDiscs() === this._numberOfDiscs) {
-            this._endTime = Date.now(); // Stop the game clock
-            return true;
-        } else {
-            return false;
-        }
+        return (this.getTower("C").getNumberOfDiscs() === this._numberOfDiscs) ? true : false;
     }
 
     /**
