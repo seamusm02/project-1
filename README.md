@@ -9,8 +9,7 @@ must be moved one at a time, stacking smaller discs on top of larger discs.
 
 * #### Bronze Plan  
   * MVP (Minimum Viable Product): Working game logic (no UI)
-    * Game board starts with three towers and a variable number of discs between 3 and 8 inclusive - **TESTED 
-      and COMPLETE**    
+    * Game board starts with three towers and a variable number of discs, between 3 and 8 inclusive, on tower A - **TESTED and COMPLETE** 
     * Discs begin on tower A, stacked in increasing width from bottom to top - **TESTED and COMPLETE**       
     * Player can move a disc to any tower, provided there are no discs on the destination tower, or the top most disc on the destination tower is larger in width than the disc to move - 
       **TESTED and COMPLETE** 
