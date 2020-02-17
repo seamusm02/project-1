@@ -1,0 +1,392 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+      Gameboard.js - Documentation
+  </title>
+
+  <link href="https://www.braintreepayments.com/images/favicon-ccda0b14.png" rel="icon" type="image/png">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+  <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+  
+
+  
+
+  <!-- start Mixpanel -->
+  <script type="text/javascript">(function(e,a){if(!a.__SV){var b=window;try{var c,l,i,j=b.location,g=j.hash;c=function(a,b){return(l=a.match(RegExp(b+"=([^&]*)")))?l[1]:null};g&&c(g,"state")&&(i=JSON.parse(decodeURIComponent(c(g,"state"))),"mpeditor"===i.action&&(b.sessionStorage.setItem("_mpcehash",g),history.replaceState(i.desiredHash||"",e.title,j.pathname+j.search)))}catch(m){}var k,h;window.mixpanel=a;a._i=[];a.init=function(b,c,f){function e(b,a){var c=a.split(".");2==c.length&&(b=b[c[0]],a=c[1]);b[a]=function(){b.push([a].concat(Array.prototype.slice.call(arguments,
+  0)))}}var d=a;"undefined"!==typeof f?d=a[f]=[]:f="mixpanel";d.people=d.people||[];d.toString=function(b){var a="mixpanel";"mixpanel"!==f&&(a+="."+f);b||(a+=" (stub)");return a};d.people.toString=function(){return d.toString(1)+".people (stub)"};k="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config reset people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+  for(h=0;h<k.length;h++)e(d,k[h]);a._i.push([b,c,f])};a.__SV=1.2;b=e.createElement("script");b.type="text/javascript";b.async=!0;b.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";c=e.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c)}})(document,window.mixpanel||[]);
+  mixpanel.init("1919205b2da72e4da3b9b6639b444d59");</script>
+  <!-- end Mixpanel -->
+</head>
+
+<body>
+  <svg style="display: none;">
+    <defs>
+      <symbol id="linkIcon" fill="#706d77" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 0h24v24H0z" fill="none"/>
+          <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <label for="nav-trigger" class="navicon-button x">
+    <div class="navicon"></div>
+  </label>
+
+  <label for="nav-trigger" class="overlay"></label>
+
+  <div class="top-nav-wrapper">
+    <ul>
+      <li >
+        <a href="index.html">
+          
+            <svg fill="#6D6D6D" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+              <path d="M0 0h24v24H0z" fill="none"/>
+            </svg>
+          
+          
+        </a>
+      </li>
+
+      
+
+    </ul>
+  </div>
+
+  <nav>
+    <h3 class="reference-title">
+      Braintree SDK Client Reference
+    </h3>
+
+    
+
+    <h3>Classes</h3><ul><li id="Disc-nav"><a href="Disc.html">Disc</a><ul class='methods'><li data-type="method" id="Disc-getColor-nav"><a href="Disc.html#getColor">getColor</a></li><li data-type="method" id="Disc-getWidth-nav"><a href="Disc.html#getWidth">getWidth</a></li></ul></li><li id="Gameboard-nav"><a href="Gameboard.html">Gameboard</a><ul class='methods'><li data-type="method" id="Gameboard-getNumberOfMoves-nav"><a href="Gameboard.html#getNumberOfMoves">getNumberOfMoves</a></li><li data-type="method" id="Gameboard-getTower-nav"><a href="Gameboard.html#getTower">getTower</a></li><li data-type="method" id="Gameboard-getWinningTime-nav"><a href="Gameboard.html#getWinningTime">getWinningTime</a></li><li data-type="method" id="Gameboard-isWinner-nav"><a href="Gameboard.html#isWinner">isWinner</a></li><li data-type="method" id="Gameboard-moveDisc-nav"><a href="Gameboard.html#moveDisc">moveDisc</a></li><li data-type="method" id="Gameboard-restartGame-nav"><a href="Gameboard.html#restartGame">restartGame</a></li></ul></li><li id="Tower-nav"><a href="Tower.html">Tower</a><ul class='methods'><li data-type="method" id="Tower-addDisc-nav"><a href="Tower.html#addDisc">addDisc</a></li><li data-type="method" id="Tower-getNumberOfDiscs-nav"><a href="Tower.html#getNumberOfDiscs">getNumberOfDiscs</a></li><li data-type="method" id="Tower-getPosition-nav"><a href="Tower.html#getPosition">getPosition</a></li><li data-type="method" id="Tower-getTopDisc-nav"><a href="Tower.html#getTopDisc">getTopDisc</a></li><li data-type="method" id="Tower-hasDisc-nav"><a href="Tower.html#hasDisc">hasDisc</a></li><li data-type="method" id="Tower-removeDisc-nav"><a href="Tower.html#removeDisc">removeDisc</a></li></ul></li></ul><h3 id="global-nav">Global</h3><ul><li><a href="global.html#include">include</a></li></ul>
+  </nav>
+
+  <div id="main">
+    
+      <h1 class="page-title">
+        Gameboard.js
+      </h1>
+    
+
+    
+      
+
+<section>
+  <article>
+    <pre class="prettyprint source linenums"><code>/**
+ * The Gameboard class represents all entities on the gameboard: Disc objects, Tower 
+ * objects, and user controls
+ */
+class Gameboard {
+
+    // Private properties
+    _numberOfDiscs = 0;  // Number of Disc objects on the gameboard
+    _numMoves = 0;       // Number of moves in the current game
+    _startTime = 0;      // Time the game started (in ms since Unix Epoch)
+    _endTime = 0;        // Time the game ended (in ms since Unix Epoch)
+    _towers = [];        // Array of Tower objects on the gameboard
+
+    /**
+     * Construct a new Gameboard with all necessary default values for child objects
+     * 
+     * @constructor
+     * @param {number} numberOfDiscs The number of discs which start on tower A
+     */
+    constructor(numberOfDiscs) {
+        this._initialize(numberOfDiscs);
+    }
+
+    /**
+    * Initialize the gameboard with three towers and a variable number of discs on tower A between 3
+    * and 8 inclusive, and start the game clock.
+    * 
+    * @ignore
+    * @param {number} numberOfDiscs Number of discs between 3 and 8 inclusive
+    */
+    _initialize(numberOfDiscs) {
+    
+        // Defined colors for our variable number of discs
+        let discColors = [        
+            '#3236a8', // blueish
+            '#32a890', // auqa greenish
+            '#a83244', // redish
+            '#a4a832', // dirty yellowish
+            '#a032a8', // purpleish
+            '#a87932', // brownish
+            '#fc0339', // redish
+            '#0398fc', // blueish 
+        ];       
+        
+        try {
+            
+            let errMsg = `In call to ${this.constructor.name}.constructor(numberOfDiscs)...\n`;
+            
+             // Create the three towers
+            let towerA = new Tower('A');
+            let towerB = new Tower('B');
+            let towerC = new Tower('C');
+
+            let largestDiscWidth = 100;
+
+            // Make sure numberOfDiscs is an integer value between 3 and 8
+            if (!Number.isInteger(numberOfDiscs) || (numberOfDiscs &lt; 3 || numberOfDiscs > 8)) {
+                
+                    errMsg += `\tnumber of discs not integer between 3 and 8 inclusive! >> ` +
+                               typeof numberOfDiscs + ` '${numberOfDiscs}'`;      
+                    throw errMsg;
+            }            
+
+            this._numberOfDiscs = numberOfDiscs; // Store the number of Disc objects
+            
+            // Add disc objects to tower A with the number of discs specified and defined color
+            for (let i = 0; i &lt; numberOfDiscs; i++) {
+                let discWidth = largestDiscWidth - (i * 10);
+                let disc = new Disc(discWidth, discColors[i]);
+                towerA.addDisc(disc); // Add the disc to tower A
+            }
+            
+            // Add the three towers to the towers collection
+            this._towers.push(towerA, towerB, towerC);
+
+            // Start the timer
+            this._startTime = Date.now();
+        }
+        catch (err) {
+            console.error(err);
+        }
+    }
+
+    /**
+     * Move a Disc object from a source Tower object to a destination Tower object
+     * 
+     * @param {Object} fromTower The source Tower object
+     * @param {Object} toTower   The destination Tower object 
+     */
+    moveDisc(fromTower, toTower) {
+        try {
+            
+            let isErr = false;
+            let errMsg = `In call to ${this.constructor.name}.moveDisc(fromTower, toTower)...\n`;
+            
+            let discToMove = {}; // The top disc from the source tower
+            
+            let fromTowerTopDiscWidth = 0; // Source tower's top disc width
+            let toTowerTopDiscWidth = 0;   // Destination tower's top disc width
+                        
+            // Throw error if parameters are not Tower objects
+            if(typeof fromTower === "undefined" || typeof toTower === "undefined") {
+                errMsg += `\tfromTower and toTower are not both Tower objects! >> ` + 
+                          "fromTower - " + typeof fromTower + ", "+
+                          "toTower - "   + typeof toTower   + "\n";
+                                                    
+                throw (errMsg);
+            }
+
+            // Throw error if source tower does not contain a disc
+            if (fromTower.hasDisc() === false) {
+                errMsg += `\tfromTower does not contain a DISC object!\n`;
+                                                        
+                isErr = true;
+            }
+            
+            // Throw error if destination tower has a top disc width which is less than the top 
+            // disc width of the source tower
+            fromTowerTopDiscWidth = fromTower.getTopDisc().getWidth();
+                            
+            toTowerTopDiscWidth = toTower.hasDisc() 
+            ? toTowerTopDiscWidth = toTower.getTopDisc().getWidth() 
+            : 0; // if the width is zero, the destination tower has no discs - OK
+                
+            if (toTowerTopDiscWidth > 0) {
+            
+                if (toTowerTopDiscWidth &lt; fromTowerTopDiscWidth) {
+                    errMsg += `\tfromTower top disc has a larger width than toTower top disc! >> ` + 
+                            `fromTower '${fromTower.getPosition()}' - '${fromTowerTopDiscWidth}',` +
+                            ` toTower '${toTower.getPosition()}' - '${toTowerTopDiscWidth}'\n`;
+                    isErr = true;   
+                }
+            }
+
+            if (isErr) throw errMsg;
+            
+            // Get the top disc object from the source tower
+            discToMove = fromTower.getTopDisc();
+
+            toTower.addDisc(discToMove); // Add the top disc object to the destination tower
+            fromTower.removeDisc();      // Remove the top disc object from the source tower
+            
+            this._numMoves++;            // Increment the number of moves in the current game
+        }
+        catch (err) {
+            console.error(err);
+        }
+
+    }
+
+    /**
+     * Return a of Tower object from the Gameboard object
+     * 
+     * @param {string} position The position of the Tower object: "A", "B", or "C"
+     * @return {Object} 
+     */
+    getTower(position) {
+        try {
+
+            let isErr = false;
+            let errMsg = `In call to ${this.constructor.name}.getTower(position)...\n`;
+
+            position = position.toUpperCase();
+            
+            // Throw error if position is not "A", "B", or "C"
+            if(! (position === 'A' || position === 'B' || position === 'C')) {
+                errMsg += `\tposition not "A", "B", or "C" >> ` +
+                           typeof position + ` '${position}'`;
+                isErr = true;
+            }
+
+            if (isErr) throw errMsg;
+
+            // Return the tower cooresponding to the lettered position
+            switch (position) {
+                case "A": return this._towers[0];  
+                case "B": return this._towers[1]; 
+                case "C": return this._towers[2]; 
+            }
+
+        }
+        catch(err) {
+            console.error(err);
+        }        
+    }
+    
+    /**
+     * Return true if all the Disc objects have been moved to Tower object "C".  This method also
+     * stops the game clock.
+     * 
+     * @return {boolean}
+     */
+    isWinner() {
+        
+        // Do the number of discs on tower "C" equal the number of discs in the game?
+        if (this.getTower("C").getNumberOfDiscs() === this._numberOfDiscs) {
+            this._endTime = Date.now(); // Stop the game clock
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Return the number of moves in the current game
+     * 
+     * @return {number}
+     */
+
+     /**
+      * Return the number of moves in the current game
+      * 
+      * @return {boolean}
+      */
+     getNumberOfMoves() {
+        return this._numMoves;
+     }
+
+     /**
+      * Restart the game by initializing the Gameboard object
+      * 
+      * @param {number} numberOfDiscs The number of discs which start on tower A
+      */
+     restartGame(numberOfDiscs) {
+         this.constructor(numberOfDiscs);
+     }
+     
+     /**
+      * Return the elapsed time of the winning game in "HH hr MM min SS sec" format
+      * 
+      * @return {string}
+      */
+     getWinningTime() {
+        
+        let seconds = 0;
+        let minutes = 0;
+        let hours = 0;
+        
+        if (this.isWinner()) {
+                 
+            // Get the number of elapsed seconds
+            seconds = (this._endTime - this._startTime) / 1000;
+
+            // Is winning time > than one minute?
+            if (seconds >= 60) {
+                minutes = seconds / 60;
+                
+                // Convert the fractional minutes portion into seconds 
+                seconds = (minutes - Math.floor(minutes)) * 60; 
+
+                // Is winning time > than one hour?
+                if (minutes >= 60) {
+                   // hours = Math.floor(Math.floor(minutes) / 60);
+                   hours = minutes / 60;                   
+                   minutes = minutes / 60;
+                }
+            }            
+            
+            // Round seconds to the thousandth place and fix decimal to three places
+            seconds = (Math.round(seconds * 1000) / 1000).toFixed(3); 
+            
+            // Get the integer portion of minutes
+            minutes = Math.floor(minutes);
+
+            // Get the integer portion of hours
+            hours = Math.floor(hours);
+            
+            return hours.toString() + " hr " + minutes.toString() + " min " + seconds.toString() + 
+            " sec";
+            
+        } else {
+            return "";
+        }
+     }
+}
+
+
+
+</code></pre>
+  </article>
+</section>
+
+    
+
+
+  </div>
+
+  <br class="clear">
+
+  <footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
+  </footer>
+
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/pagelocation.js"></script>
+
+  
+
+</body>
+</html>
