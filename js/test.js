@@ -37,43 +37,53 @@ console.log("");
 console.log("Create a new gameboard with 3 discs");
 let gameBoard = new Gameboard(3);
 console.log(gameBoard);
+console.log("");
 
 console.log("Move the 3 discs in correct sequence from tower A to tower C...");
+console.log("");
 
-// Move a disc from tower A to tower C
+console.log("Move smallest disc from tower A to tower C");
 gameBoard.moveDisc(gameBoard.getTower('A'), gameBoard.getTower('C'));
 console.log("isWinner === " + gameBoard.isWinner() + ", number of moves = " + 
 gameBoard.getNumberOfMoves());
+console.log("");
 
-// Move the 2nd disc from tower A to tower B
+console.log("Move medium disc from tower A to tower B");
 gameBoard.moveDisc(gameBoard.getTower('A'), gameBoard.getTower('B'));
 console.log("isWinner === " + gameBoard.isWinner() + ", number of moves = " + 
 gameBoard.getNumberOfMoves());
+console.log("");
 
-// Move the disc from tower C to tower B
+console.log("Move smallest disc from tower C to tower B");
 gameBoard.moveDisc(gameBoard.getTower('C'), gameBoard.getTower('B'));
 console.log("isWinner === " + gameBoard.isWinner() + ", number of moves = " + 
 gameBoard.getNumberOfMoves());
+console.log("");
 
-// Move the 3rd disc from tower A to tower C
+console.log("Move largest disc from tower A to tower C");
 gameBoard.moveDisc(gameBoard.getTower('A'), gameBoard.getTower('C'));
 console.log("isWinner === " + gameBoard.isWinner() + ", number of moves = " + 
 gameBoard.getNumberOfMoves());
+console.log("");
 
-// Move the top disc from tower B to tower A
+console.log("Move smallest disc from tower B to tower A");
 gameBoard.moveDisc(gameBoard.getTower('B'), gameBoard.getTower('A'));
 console.log("isWinner === " + gameBoard.isWinner() + ", number of moves = " + 
 gameBoard.getNumberOfMoves());
+console.log("");
 
-// Move the top disc from tower B to tower C
+console.log("Move medium disc from tower B to tower C");
 gameBoard.moveDisc(gameBoard.getTower('B'), gameBoard.getTower('C'));
 console.log("isWinner === " + gameBoard.isWinner() + ", number of moves = " + 
 gameBoard.getNumberOfMoves());
+console.log("");
 
-// Move the top disc from tower A to tower C
+console.log("Move smallest disc from tower A to tower C");
 gameBoard.moveDisc(gameBoard.getTower('A'), gameBoard.getTower('C'));
 console.log("isWinner === " + gameBoard.isWinner() + ", number of moves = " + 
 gameBoard.getNumberOfMoves());
+console.log("");
+
 console.log("Winning time = " + gameBoard.getWinningTime());
 
 
