@@ -8,11 +8,15 @@ must be moved one at a time, stacking smaller discs on top of larger discs.
 ![Towers of Hanoi - flatironschool](https://images.ctfassets.net/hkpf2qd2vxgx/56lxeRTnPTeYI4q3UqNnMu/5953458a408f7eb83cea26c9475e25d2/tumblr_inline_mutp1vmLcY1rtan47.jpg) 
 
 * #### Bronze Plan  
-  * MVP (Minimum Viable Product): Working game logic (no UI) - **TESTED and COMPLETE**
-    * Game board starts with three towers and a variable number of discs between 3 and 8 inclusive.    
-    * Discs begin on tower A, stacked in increasing width from bottom to top.        
-    * Player can move a disc to any tower, provided there are no discs on the destination tower, or the top most disc on the destination tower is larger in width than the disc to move.  
-    * When all discs have been moved from tower A to tower C, the game is over.
+  * MVP (Minimum Viable Product): Working game logic (no UI)
+    * Game board starts with three towers and a variable number of discs between 3 and 8 inclusive - **TESTED 
+      and COMPLETE**    
+    * Discs begin on tower A, stacked in increasing width from bottom to top - **TESTED and COMPLETE**       
+    * Player can move a disc to any tower, provided there are no discs on the destination tower, or the top most disc on the destination tower is larger in width than the disc to move - 
+      **TESTED and COMPLETE** 
+    * When all discs have been moved from tower A to tower C, the game is over - **TESTED and COMPLETE**
+    * Number of moves to achieve a winning game is calculated - **TESTED and COMPLETE**
+    * Number of minimum moves for a given number of discs is calculated - **TODO**
 
 * #### Silver Plan
   * Add time-based scoring to MVP, which calculates the duration of a winning game - **TESTED and COMPLETE**
