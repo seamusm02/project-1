@@ -22,7 +22,7 @@ must be moved one at a time, stacking smaller discs on top of larger discs.
 * #### Gold Plan
   * Polished UI with animations like the UI shown below
      
- ![Towers of Hanoi - animated](https://github.com/seamusm02/project-1/blob/master/resource/animated_tower_of_hanoi.gif)
+ ![Towers of Hanoi - animated](https://seamusm02.github.io/project-1/resource/animated_tower_of_hanoi.gif)
 
 ### Features   
 * Class-based design
