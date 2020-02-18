@@ -2,10 +2,20 @@ body {
     text-align: center;
 }
 
+header {
+    font-size: 1.5em;
+    font-family: 'Architects Daughter';
+}
+
+#dashboard {
+    background-color: LawnGreen;
+}
+
 .tower-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin-top: 100px;
     /* background-color: DodgerBlue; */
 }
 
@@ -13,125 +23,85 @@ body {
     display: flex;
     flex-direction: column;
     /* background-color: #f1f1f1; */
-    width: 300px;
     margin: 10px;
     line-height: 300px;
 }
 
-#towerA-column {
+.tower-columns {
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: auto;                /* Need to set this property on the column */
-    line-height: 30px;
-    width: 15px;
-    height: 15px;
+    margin-top: auto; /* Need to set this property on the column */
+    width: 10px;
+    background-color: DodgerBlue; 
+}
+
+.tower-bases {
+    border-radius: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 10px;
+    width: 165px;
     background-color: DodgerBlue;
 }
 
-#towerB-column {
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: auto;                /* Need to set this property on the column */
-    line-height: 30px;
-    width: 15px;
-    height: 255px;
-    background-color: DodgerBlue;
-}
-
-#towerC-column {
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: auto;                /* Need to set this property on the column */
-    line-height: 30px;
-    width: 15px;
-    height: 255px;
-    background-color: DodgerBlue;
-}
-
-#disc1 {
-    border-radius: 25px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 30px;
-    width: 50px;
-    background-color: yellow;
-}
-
-#disc2 {
-    border-radius: 25px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 30px;
-    width: 75px;
-    background-color: blueviolet;
-}
-
-#disc3 {
-    border-radius: 25px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 30px;
-    width: 100px;
-    background-color: green;
-}
-
-#disc4 {
-    border-radius: 25px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 30px;
-    width: 125px;
-    background-color: red;
-}
-
-#disc5 {
-    border-radius: 25px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 30px;
-    width: 150px;
-    background-color: orange;
-}
-
-#disc6 {
-    border-radius: 25px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 30px;
-    width: 175px;
-    background-color: Chartreuse;
-}
-
-#disc7 {
-    border-radius: 25px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 30px;
-    width: 200px;
-    background-color: Magenta;
-}
-
-#disc8 {
-    border-radius: 25px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 30px;
-    width: 225px;
-    background-color: MediumBlue;
-}
-
-#towerA-base, #towerB-base, #towerC-base {
+.discs {
     border-radius: 25px;
     margin-left: auto;
     margin-right: auto;
     line-height: 15px;
-    width: 250px;
-    background-color: DodgerBlue;
+}
+
+#towerA-column {
+    height: 15px;
+}
+
+#towerB-column {
+    height: 135px;
+}
+
+#towerC-column {
+    height: 135px;
+}
+
+#disc1 { 
+    width: 30px;
+    background-color: yellow;
+}
+
+#disc2 {
+    width: 45px;
+    background-color: blueviolet;
+}
+
+#disc3 {
+    width: 60px;
+    background-color: green;
+}
+
+#disc4 {
+    width: 75px;
+    background-color: red;
+}
+
+#disc5 {
+    width: 90px;
+    background-color: orange;
+}
+
+#disc6 {
+    width: 105px;
+    background-color: Chartreuse;
+}
+
+#disc7 {
+    width: 120px;
+    background-color: Magenta;
+}
+
+#disc8 {
+    width: 135px;
+    background-color: MediumBlue;
 }
 
