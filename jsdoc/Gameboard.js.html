@@ -75,7 +75,7 @@
 
     
 
-    <h3>Classes</h3><ul><li id="Disc-nav"><a href="Disc.html">Disc</a><ul class='methods'><li data-type="method" id="Disc-getColor-nav"><a href="Disc.html#getColor">getColor</a></li><li data-type="method" id="Disc-getWidth-nav"><a href="Disc.html#getWidth">getWidth</a></li></ul></li><li id="Gameboard-nav"><a href="Gameboard.html">Gameboard</a><ul class='methods'><li data-type="method" id="Gameboard-getNumberOfMoves-nav"><a href="Gameboard.html#getNumberOfMoves">getNumberOfMoves</a></li><li data-type="method" id="Gameboard-getTower-nav"><a href="Gameboard.html#getTower">getTower</a></li><li data-type="method" id="Gameboard-getWinningTime-nav"><a href="Gameboard.html#getWinningTime">getWinningTime</a></li><li data-type="method" id="Gameboard-isWinner-nav"><a href="Gameboard.html#isWinner">isWinner</a></li><li data-type="method" id="Gameboard-moveDisc-nav"><a href="Gameboard.html#moveDisc">moveDisc</a></li><li data-type="method" id="Gameboard-restartGame-nav"><a href="Gameboard.html#restartGame">restartGame</a></li></ul></li><li id="Tower-nav"><a href="Tower.html">Tower</a><ul class='methods'><li data-type="method" id="Tower-addDisc-nav"><a href="Tower.html#addDisc">addDisc</a></li><li data-type="method" id="Tower-getNumberOfDiscs-nav"><a href="Tower.html#getNumberOfDiscs">getNumberOfDiscs</a></li><li data-type="method" id="Tower-getPosition-nav"><a href="Tower.html#getPosition">getPosition</a></li><li data-type="method" id="Tower-getTopDisc-nav"><a href="Tower.html#getTopDisc">getTopDisc</a></li><li data-type="method" id="Tower-hasDisc-nav"><a href="Tower.html#hasDisc">hasDisc</a></li><li data-type="method" id="Tower-removeDisc-nav"><a href="Tower.html#removeDisc">removeDisc</a></li></ul></li></ul><h3 id="global-nav">Global</h3><ul><li><a href="global.html#include">include</a></li></ul>
+    <h3>Classes</h3><ul><li id="Disc-nav"><a href="Disc.html">Disc</a><ul class='methods'><li data-type="method" id="Disc-_setID-nav"><a href="Disc.html#_setID">_setID</a></li><li data-type="method" id="Disc-getColor-nav"><a href="Disc.html#getColor">getColor</a></li><li data-type="method" id="Disc-getHeight-nav"><a href="Disc.html#getHeight">getHeight</a></li><li data-type="method" id="Disc-getID-nav"><a href="Disc.html#getID">getID</a></li><li data-type="method" id="Disc-getWidth-nav"><a href="Disc.html#getWidth">getWidth</a></li></ul></li><li id="Gameboard-nav"><a href="Gameboard.html">Gameboard</a><ul class='methods'><li data-type="method" id="Gameboard-getNumberOfDiscs-nav"><a href="Gameboard.html#getNumberOfDiscs">getNumberOfDiscs</a></li><li data-type="method" id="Gameboard-getNumberOfMoves-nav"><a href="Gameboard.html#getNumberOfMoves">getNumberOfMoves</a></li><li data-type="method" id="Gameboard-getTower-nav"><a href="Gameboard.html#getTower">getTower</a></li><li data-type="method" id="Gameboard-getWinningTime-nav"><a href="Gameboard.html#getWinningTime">getWinningTime</a></li><li data-type="method" id="Gameboard-isWinner-nav"><a href="Gameboard.html#isWinner">isWinner</a></li><li data-type="method" id="Gameboard-moveDisc-nav"><a href="Gameboard.html#moveDisc">moveDisc</a></li><li data-type="method" id="Gameboard-restartGame-nav"><a href="Gameboard.html#restartGame">restartGame</a></li><li data-type="method" id="Gameboard-startTime-nav"><a href="Gameboard.html#startTime">startTime</a></li></ul></li><li id="Tower-nav"><a href="Tower.html">Tower</a><ul class='methods'><li data-type="method" id="Tower-addBottomDisc-nav"><a href="Tower.html#addBottomDisc">addBottomDisc</a></li><li data-type="method" id="Tower-addTopDisc-nav"><a href="Tower.html#addTopDisc">addTopDisc</a></li><li data-type="method" id="Tower-getDiscs-nav"><a href="Tower.html#getDiscs">getDiscs</a></li><li data-type="method" id="Tower-getNumberOfDiscs-nav"><a href="Tower.html#getNumberOfDiscs">getNumberOfDiscs</a></li><li data-type="method" id="Tower-getPosition-nav"><a href="Tower.html#getPosition">getPosition</a></li><li data-type="method" id="Tower-getTopDisc-nav"><a href="Tower.html#getTopDisc">getTopDisc</a></li><li data-type="method" id="Tower-hasDisc-nav"><a href="Tower.html#hasDisc">hasDisc</a></li><li data-type="method" id="Tower-removeBottomDisc-nav"><a href="Tower.html#removeBottomDisc">removeBottomDisc</a></li><li data-type="method" id="Tower-removeTopDisc-nav"><a href="Tower.html#removeTopDisc">removeTopDisc</a></li></ul></li></ul><h3 id="global-nav">Global</h3><ul><li><a href="global.html#displayDiscs">displayDiscs</a></li><li><a href="global.html#updateMinNumberOfMovesDisplay">updateMinNumberOfMovesDisplay</a></li><li><a href="global.html#updateNumberOfDiscsDisplay">updateNumberOfDiscsDisplay</a></li></ul>
   </nav>
 
   <div id="main">
@@ -107,10 +107,10 @@ class Gameboard {
      * Construct a new Gameboard with all necessary default values for child objects
      * 
      * @constructor
-     * @param {number} numberOfDiscs The number of discs which start on tower A
+     * @param {Disc[]} discs An array of Disc objects which will start on tower A
      */
-    constructor(numberOfDiscs) {
-        this._initialize(numberOfDiscs);
+    constructor(discs) {
+        this._initialize(discs);
     }
 
     /**
@@ -118,55 +118,47 @@ class Gameboard {
     * and 8 inclusive, and start the game clock.
     * 
     * @ignore
-    * @param {number} numberOfDiscs Number of discs between 3 and 8 inclusive
+    * @param {discs} {Disc[]} discs An array of Disc objects which will start on tower A
     */
-    _initialize(numberOfDiscs) {
-    
-        // Defined colors for our variable number of discs
-        let discColors = [        
-            '#3236a8', // blueish
-            '#32a890', // auqa greenish
-            '#a83244', // redish
-            '#a4a832', // dirty yellowish
-            '#a032a8', // purpleish
-            '#a87932', // brownish
-            '#fc0339', // redish
-            '#0398fc', // blueish 
-        ];       
-        
+    _initialize(discs) {  
+           
         try {
             
-            let errMsg = `In call to ${this.constructor.name}.constructor(numberOfDiscs)...\n`;
+            let errMsg = `In call to ${this.constructor.name}.constructor(discs)...\n`;
             
              // Create the three towers
             let towerA = new Tower('A');
             let towerB = new Tower('B');
             let towerC = new Tower('C');
 
-            let largestDiscWidth = 100;
-
-            // Make sure numberOfDiscs is an integer value between 3 and 8
-            if (!Number.isInteger(numberOfDiscs) || (numberOfDiscs &lt; 3 || numberOfDiscs > 8)) {
-                
-                    errMsg += `\tnumber of discs not integer between 3 and 8 inclusive! >> ` +
-                               typeof numberOfDiscs + ` '${numberOfDiscs}'`;      
-                    throw errMsg;
-            }            
-
-            this._numberOfDiscs = numberOfDiscs; // Store the number of Disc objects
+            // Throw error if discs is not an array
+            if (!Array.isArray(discs)) {
+                errMsg += `\tdiscs is not an Array! >> ` + 
+                          `${discs.constructor.name}' - '${discs}'\n`;
+                throw errMsg;
+            } 
             
-            // Add disc objects to tower A with the number of discs specified and defined color
-            for (let i = 0; i &lt; numberOfDiscs; i++) {
-                let discWidth = largestDiscWidth - (i * 10);
-                let disc = new Disc(discWidth, discColors[i]);
-                towerA.addDisc(disc); // Add the disc to tower A
+            // Throw error if any of the elements in discs is not a Disc object
+            for (let i = 0; i &lt; discs.length; i++) {
+            
+                if(discs[i].constructor.name !== 'Disc') {
+                    errMsg += `\tdiscs[${i}] is not a Disc object! >> ` + 
+                            `${discs[i].constructor.name}' - '${discs[i]}'\n`;
+                                                        
+                    throw errMsg;
+                }
             }
             
+            this._numberOfDiscs = discs.length; // Store the number of Disc objects on the gameboard
+            
+            // Add disc objects to tower A
+            for (let i = discs.length; i > 0; i--) {
+                    towerA.addTopDisc(discs[i-1]);
+                }           
+                
             // Add the three towers to the towers collection
             this._towers.push(towerA, towerB, towerC);
 
-            // Start the timer
-            this._startTime = Date.now();
         }
         catch (err) {
             console.error(err);
@@ -229,10 +221,13 @@ class Gameboard {
             // Get the top disc object from the source tower
             discToMove = fromTower.getTopDisc();
 
-            toTower.addDisc(discToMove); // Add the top disc object to the destination tower
-            fromTower.removeDisc();      // Remove the top disc object from the source tower
+            toTower.addTopDisc(discToMove); // Add the top disc object to the destination tower
+            fromTower.removeTopDisc();   // Remove the top disc object from the source tower            
             
+            if (this.isWinner()) this._endTime = Date.now(); // Stop game clock if the user has won
+
             this._numMoves++;            // Increment the number of moves in the current game
+            
         }
         catch (err) {
             console.error(err);
@@ -282,15 +277,9 @@ class Gameboard {
      * 
      * @return {boolean}
      */
-    isWinner() {
-        
+    isWinner() {  
         // Do the number of discs on tower "C" equal the number of discs in the game?
-        if (this.getTower("C").getNumberOfDiscs() === this._numberOfDiscs) {
-            this._endTime = Date.now(); // Stop the game clock
-            return true;
-        } else {
-            return false;
-        }
+        return (this.getTower("C").getNumberOfDiscs() === this._numberOfDiscs) ? true : false;
     }
 
     /**
@@ -311,10 +300,10 @@ class Gameboard {
      /**
       * Restart the game by initializing the Gameboard object
       * 
-      * @param {number} numberOfDiscs The number of discs which start on tower A
+      * @param {Disc[]} discs An array of Disc objects which will start on tower A
       */
-     restartGame(numberOfDiscs) {
-         this.constructor(numberOfDiscs);
+     restartGame(discs) {
+         this.constructor(discs);
      }
      
      /**
@@ -364,6 +353,24 @@ class Gameboard {
             return "";
         }
      }
+
+     /**
+      * Return the number of discs on the game board 
+      * 
+      * @return {number}
+      */
+     getNumberOfDiscs() {
+         return this._numberOfDiscs;
+     }
+
+     /**
+      * Start the game clock
+      * 
+      * @return {number} Returns the number of milliseconds since the Unix Epoch
+      */
+    startTime() {
+        return this._startTime = Date.now();  // Start the game timer
+    }           
 }
 
 

@@ -2,85 +2,73 @@
  * The Gameboard class represents all entities on the gameboard: Disc objects, Tower 
  * objects, and user controls
  */
-class Gameboard {
-
-    // Private properties
-    _numberOfDiscs = 0;  // Number of Disc objects on the gameboard
-    _numMoves = 0;       // Number of moves in the current game
-    _startTime = 0;      // Time the game started (in ms since Unix Epoch)
-    _endTime = 0;        // Time the game ended (in ms since Unix Epoch)
-    _towers = [];        // Array of Tower objects on the gameboard
+class Gameboard {    
 
     /**
      * Construct a new Gameboard with all necessary default values for child objects
      * 
      * @constructor
-     * @param {number} numberOfDiscs The number of discs which start on tower A
+     * @param {Tower[]} towers An array of Tower objects 
      */
-    constructor(numberOfDiscs) {
-        this._initialize(numberOfDiscs);
+    constructor(towers) {
+    	
+    	this._towers = [];            // Array of Tower objects on the gameboard
+    	this.setTowers(towers);
+    	
+    	this._numberOfDiscs = 0;      // Number of Disc objects on the gameboard
+    	this._selectedDisc = {};      // The selected Disc object
+    	this._destinationTower = {};  // The destination Tower object
+    	this._numMoves = 0;           // Number of moves in the current game
+    	this._startTime = 0;          // Time the game started (in ms since Unix Epoch)
+    	this._endTime = 0;            // Time the game ended (in ms since Unix Epoch)
+    	this._gameLog = {};           // Object of game stats      
     }
 
     /**
-    * Initialize the gameboard with three towers and a variable number of discs on tower A between 3
-    * and 8 inclusive, and start the game clock.
-    * 
-    * @ignore
-    * @param {number} numberOfDiscs Number of discs between 3 and 8 inclusive
-    */
-    _initialize(numberOfDiscs) {
-    
-        // Defined colors for our variable number of discs
-        let discColors = [        
-            '#3236a8', // blueish
-            '#32a890', // auqa greenish
-            '#a83244', // redish
-            '#a4a832', // dirty yellowish
-            '#a032a8', // purpleish
-            '#a87932', // brownish
-            '#fc0339', // redish
-            '#0398fc', // blueish 
-        ];       
+     * Add the array of Tower objects to the game board
+     * 
+     * @param {Tower[]} towers Array of Tower objects 
+     */
+    setTowers(towers) {
         
         try {
             
-            let errMsg = `In call to ${this.constructor.name}.constructor(numberOfDiscs)...\n`;
+            let errMsg = `In call to ${this.constructor.name}.setTowers(towers)...\n`;
             
-             // Create the three towers
-            let towerA = new Tower('A');
-            let towerB = new Tower('B');
-            let towerC = new Tower('C');
-
-            let largestDiscWidth = 100;
-
-            // Make sure numberOfDiscs is an integer value between 3 and 8
-            if (!Number.isInteger(numberOfDiscs) || (numberOfDiscs < 3 || numberOfDiscs > 8)) {
-                
-                    errMsg += `\tnumber of discs not integer between 3 and 8 inclusive! >> ` +
-                               typeof numberOfDiscs + ` '${numberOfDiscs}'`;      
+            // Throw error if towers is not an array            
+            if (!Array.isArray(towers)) {
+                errMsg += `\ttowers is not an Array! >> ${towers.constructor.name}' - ` +
+                          `'${towers}'\n`;
+                throw errMsg;
+            } 
+            
+            // Throw error if any of the elements in towers is not a Towers object
+            for (let i = 0; i < towers.length; i++) {
+            
+                if(towers[i].constructor.name !== 'Tower') {
+                    errMsg += `\ttowers[${i}] is not a Tower object! >> ` + 
+                            `${towers[i].constructor.name}' - '${towers[i]}'\n`;
+                                                        
                     throw errMsg;
-            }            
-
-            this._numberOfDiscs = numberOfDiscs; // Store the number of Disc objects
-            
-            // Add disc objects to tower A with the number of discs specified and defined color
-            for (let i = 0; i < numberOfDiscs; i++) {
-                let discWidth = largestDiscWidth - (i * 10);
-                let disc = new Disc(discWidth, discColors[i]);
-                towerA.addDisc(disc); // Add the disc to tower A
+                }
             }
-            
-            // Add the three towers to the towers collection
-            this._towers.push(towerA, towerB, towerC);
 
-            // Start the timer
-            this._startTime = Date.now();
+            this._towers = towers;
         }
-        catch (err) {
-            console.error(err);
+        catch(err) {
+            console.log(err);
         }
     }
 
+    /**
+     * Return the array of Tower objects 
+     * 
+     * @return {Tower[]} 
+     */
+    getTowers() {
+        return this._towers;      
+    }   
+    
     /**
      * Move a Disc object from a source Tower object to a destination Tower object
      * 
@@ -137,8 +125,8 @@ class Gameboard {
             // Get the top disc object from the source tower
             discToMove = fromTower.getTopDisc();
 
-            toTower.addDisc(discToMove); // Add the top disc object to the destination tower
-            fromTower.removeDisc();      // Remove the top disc object from the source tower            
+            toTower.addTopDisc(discToMove); // Add the top disc object to the destination tower
+            fromTower.removeTopDisc();   // Remove the top disc object from the source tower            
             
             if (this.isWinner()) this._endTime = Date.now(); // Stop game clock if the user has won
 
@@ -154,32 +142,27 @@ class Gameboard {
     /**
      * Return a of Tower object from the Gameboard object
      * 
-     * @param {string} position The position of the Tower object: "A", "B", or "C"
+     * @param {string} id The ID of the Tower object
      * @return {Object} 
      */
-    getTower(position) {
+    getTower(id) {
         try {
 
-            let isErr = false;
-            let errMsg = `In call to ${this.constructor.name}.getTower(position)...\n`;
-
-            position = position.toUpperCase();
-            
-            // Throw error if position is not "A", "B", or "C"
-            if(! (position === 'A' || position === 'B' || position === 'C')) {
-                errMsg += `\tposition not "A", "B", or "C" >> ` +
-                           typeof position + ` '${position}'`;
-                isErr = true;
+            let errMsg = `In call to ${this.constructor.name}.getTower(id)...\n`;
+     
+            // Throw error if id is not a string
+            if (typeof id !== "string") {
+                errMsg += `\tid not string! >> ` + typeof id + "\n";
+                throw errMsg;
             }
 
-            if (isErr) throw errMsg;
-
-            // Return the tower cooresponding to the lettered position
-            switch (position) {
-                case "A": return this._towers[0];  
-                case "B": return this._towers[1]; 
-                case "C": return this._towers[2]; 
+            // Throw error if id does not exist in the array of towers
+            for (let tower of this.getTowers()) {
+                if ( tower.getID() === id) return tower;
             }
+
+            errMsg += `\tid not a valid tower ID! >> id = '${id}'\n`;
+            throw errMsg;
 
         }
         catch(err) {
@@ -188,14 +171,13 @@ class Gameboard {
     }
     
     /**
-     * Return true if all the Disc objects have been moved to Tower object "C".  This method also
-     * stops the game clock.
+     * Return true if all the Disc objects have been moved to TowerC. 
      * 
      * @return {boolean}
      */
     isWinner() {  
         // Do the number of discs on tower "C" equal the number of discs in the game?
-        return (this.getTower("C").getNumberOfDiscs() === this._numberOfDiscs) ? true : false;
+        return this.getTower("towerC").getNumberOfDiscs() === this._numberOfDiscs ? true : false; 
     }
 
     /**
@@ -203,8 +185,8 @@ class Gameboard {
      * 
      * @return {number}
      */
-
-     /**
+    
+    /**
       * Return the number of moves in the current game
       * 
       * @return {boolean}
@@ -216,10 +198,10 @@ class Gameboard {
      /**
       * Restart the game by initializing the Gameboard object
       * 
-      * @param {number} numberOfDiscs The number of discs which start on tower A
+      * @param {Disc[]} discs An array of Disc objects which will start on tower A
       */
-     restartGame(numberOfDiscs) {
-         this.constructor(numberOfDiscs);
+     restart(discs) {
+         this.constructor(discs);
      }
      
      /**
@@ -262,14 +244,274 @@ class Gameboard {
             // Get the integer portion of hours
             hours = Math.floor(hours);
             
-            return hours.toString() + " hr " + minutes.toString() + " min " + seconds.toString() + 
-            " sec";
+            if (hours > 0) {
+            	return hours.toString() + " hr " + minutes.toString() + " min " + seconds.toString() + 
+                " sec";
+            	
+            }
+            else if (minutes > 0) {
+            	return minutes.toString() + " min " + seconds.toString() + " sec";
+            }
+            else {
+            	return seconds.toString() + " sec";
+            }
             
         } else {
             return "";
         }
      }
-}
+     
+     /**
+      * Set the number of discs on the game board 
+      * 
+      * @param {number} numberOfDiscs The number of discs to start with
+      */
+     setNumberOfDiscs(numberOfDiscs) {
+         this._numberOfDiscs = numberOfDiscs;
+     }
 
+     /**
+      * Return the number of discs on the game board 
+      * 
+      * @return {number}
+      */
+     getNumberOfDiscs() {
+         return this._numberOfDiscs;
+     }
+     
+     /**
+      * Increment the number of discs on the gameboard by one
+      */
+     incrementNumberOfDiscs() {
+    	 this._numberOfDiscs++;
+     }
+     
+     /**
+      * Decrement the number of discs on the gameboard by one
+      */
+     decrementNumberOfDiscs() {
+    	 this._numberOfDiscs--;
+     }
+     
+    /**
+      * Start the game clock
+      * 
+      * @param {number} Date.now() to start game clock || 0 to reset game clock 
+      */
+    setStartTime(time) {
+        try {
+
+            let errMsg = `In call to ${this.constructor.name}.setStartTime(time)...\n`;
+            
+            if (typeof time !== "number") {
+                errMsg += `\ttime not typeof number >> typeof time '${time}'`;
+                throw errMsg;
+            }
+
+            this._startTime = time; // Start the game timer
+
+        }
+        catch(err) {
+            console.log(err);
+        }
+    }
+    
+    /**
+      * Return the game start time
+      * 
+      * @return {number} Returns the number of milliseconds since the Unix Epoch or 0
+      */
+    getStartTime() {
+        return this._startTime;  
+    }
+    
+   /**
+     * End the game clock
+     * 
+     * @param {number} Date.now() to end game clock
+     */
+   setEndTime(time) {
+       try {
+
+           let errMsg = `In call to ${this.constructor.name}.setEndTime(time)...\n`;
+           
+           if (typeof time !== "number") {
+               errMsg += `\ttime not typeof number >> typeof time '${time}'`;
+               throw errMsg;
+           }
+
+           this._endTime = time; // End the game timer
+
+       }
+       catch(err) {
+           console.log(err);
+       }
+
+   }
+   
+    /**
+     * Return the game end time
+     * 
+     * @return {number} Returns the number of milliseconds since the Unix Epoch or 0
+     */
+   getEndTime() {
+       return this._endTime;  
+   }
+
+    /**
+     * Set the selected Disc object
+     * 
+     * @param {Object} disc The selected disc object
+     */
+    setSelectedDisc(disc) {
+
+        try {
+            
+            let errMsg = `In call to ${this.constructor.name}.setSelectedDisc(disc)...\n`;
+            
+            // Throw error if parameter is not a disc object
+           // if (disc.constructor.name !== "Disc") {
+            //    errMsg += `\tdisc is not a Disc object! >> disc - ` + typeof disc + "\n";
+                                                    
+            //    throw errMsg;
+          //  }
+            
+            this._selectedDisc = disc;
+            
+        }
+        catch(err) {
+                console.error(err);
+        }
+
+    }
+
+    /**
+     * Return the selected Disc object
+     * 
+     * @return {Object}
+     */
+    getSelectedDisc() {     
+        return this._selectedDisc;
+    }
+
+    /**
+     * Set the destination Tower object
+     * 
+     * @param {Object} tower The destination Tower object
+     */
+    setDestinationTower(tower) {
+
+        try {
+            
+        	let errMsg = `In call to ${this.constructor.name}.setDestinationTower(tower)...\n`;
+        	
+        	// Throw error if parameter is not a Tower object
+            if(tower.constructor.name !== "Tower") {
+                errMsg += `\ttower is not a Tower object! >> tower - ` + typeof tower + "\n";
+                                                    
+                throw (errMsg);
+            }
+            
+            this._destinationTower = tower;
+            
+        }
+        catch(err) {
+                console.error(err);
+        }
+
+    }
+
+    /**
+     * Return the destination Tower object
+     * 
+     * @return {Object}
+     */
+    getDestinationTower() {     
+        return this._destinationTower;
+    }
+    
+    /**
+     * Create the game log after a win or giving up (i.e hitting the reset button)
+     */
+    setGameLog() {
+    // date-time | Number of discs | Moves to win | Your Moves | Elapsed Time | "Won", "Gave up"
+    	
+    	let logString = "";
+    	
+    	let dateTime = new Date(this.getStartTime())
+    	//dateTime.toLocaleString();
+    	dateTime;
+    	this._gameLog.dateTime = dateTime;
+    	
+    	logString += `${dateTime}\t`;
+
+    	logString += this.getNumberOfDiscs().toString() + "\t";
+    	
+    	let numberOfDiscs = this.getNumberOfDiscs();
+    	this._gameLog.numberOfDiscs = numberOfDiscs;
+    	
+    	let movesToWin = (Math.pow(2, this.getNumberOfDiscs()) - 1).toString();
+    	logString += movesToWin + "\t";
+    	movesToWin = (Math.pow(2, this.getNumberOfDiscs()) - 1);
+    	this._gameLog.movesToWin = movesToWin;    	
+
+        logString += this.getNumberOfMoves().toString() + "\t";
+        
+        let yourMoves = this.getNumberOfMoves();
+        this._gameLog.yourMoves = yourMoves;
+        
+     // Get the number of elapsed seconds
+        let seconds = (this._endTime - this._startTime) / 1000;
+        let minutes = 0;
+        let hours = 0;
+
+        // Is winning time > than one minute?
+        if (seconds >= 60) {
+            minutes = seconds / 60;
+            
+            // Convert the fractional minutes portion into seconds 
+            seconds = (minutes - Math.floor(minutes)) * 60; 
+
+            // Is winning time > than one hour?
+            if (minutes >= 60) {
+               // hours = Math.floor(Math.floor(minutes) / 60);
+               hours = minutes / 60;                   
+               minutes = minutes / 60;
+            }
+        }            
+        
+        // Round seconds to the thousandth place and fix decimal to three places
+        seconds = (Math.round(seconds * 1000) / 1000).toFixed(3); 
+        
+        // Get the integer portion of minutes
+        minutes = Math.floor(minutes);
+
+        // Get the integer portion of hours
+        hours = Math.floor(hours);
+    	
+    	let elapsedTime = hours.toString() + " hr " + minutes.toString() + " min " + 
+    	               seconds.toString() + " sec";
+    	
+    	logString += `${elapsedTime}\t`;
+    	this._gameLog.elapsedTime = elapsedTime;
+    	
+        logString += this.isWinner() ? "Won" : "Gave Up";
+        let status = this.isWinner() ? "Won" : "Gave Up";
+        this._gameLog.status = status;
+       
+        
+        //this._gameLog = logString;
+    }
+    
+    /**
+     * Return the game log
+     * 
+     * @return {string}
+     */
+    getGameLog() {
+    	return this._gameLog;
+    }
+    
+}
 
 

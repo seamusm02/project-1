@@ -20,17 +20,17 @@ console.log("");
 
 //Add discs 1, 2, and 3 to towerA
 console.log("Add discs 1, 2, and 3 to towerA");
-towerA.addDisc(disc1); 
-towerA.addDisc(disc2); 
-towerA.addDisc(disc3);
+towerA.addTopDisc(disc1); 
+towerA.addTopDisc(disc2); 
+towerA.addTopDisc(disc3);
 console.log(towerA, towerB, towerC);
 console.log(""); 
 
 // Remove a disc from towerA
 console.log("Remove a disc from towerA"); 
-towerA.removeDisc();
+towerA.removeTopDisc();
 console.log("Remove a disc from towerA"); 
-towerA.removeDisc();
+towerA.removeTopDisc();
 console.log(towerA);
 console.log("");
 

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 <title>Towers of Hanoi - JavaScript Project</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 <link href="https://fonts.googleapis.com/css?family=Architects Daughter" rel="stylesheet">
 <link href="./css/style.css" rel="stylesheet">
 </head>
@@ -12,45 +13,58 @@
     <Header>
         <h1>Towers of Hanoi</h1>
     </Header>
-    <section id="dashboard">&nbsp;</section>
-    <section class="tower-container">
-        <div id="towerA">
-            <div class="tower-columns" id="towerA-column">&nbsp;</div>
-            <div class="discs" id="disc1">&nbsp;</div>
-            <div class="discs" id="disc2">&nbsp;</div>
-            <div class="discs" id="disc3">&nbsp;</div>
-            <div class="discs" id="disc4">&nbsp;</div>
-            <div class="discs" id="disc5">&nbsp;</div>
-            <div class="discs" id="disc6">&nbsp;</div>
-            <div class="discs" id="disc7">&nbsp;</div>
-            <div class="discs" id="disc8">&nbsp;</div>
-            <div class="tower-bases" id="towerA-base">&nbsp;</div>     
-        </div>
-        <div id="towerB">
-            <div class="tower-columns" id="towerB-column">&nbsp;</div>
-     <!--        <div class="discs" id="disc1">&nbsp;</div>
-            <div class="discs" id="disc2">&nbsp;</div>
-            <div class="discs" id="disc3">&nbsp;</div>
-            <div class="discs" id="disc4">&nbsp;</div>
-            <div class="discs" id="disc5">&nbsp;</div>
-            <div class="discs" id="disc6">&nbsp;</div>
-            <div class="discs" id="disc7">&nbsp;</div>
-            <div class="discs" id="disc8">&nbsp;</div> -->
-            <div class="tower-bases" id="towerB-base">&nbsp;</div> 
-        </div>
-        <div id="towerC">
-            <div  class="tower-columns" id="towerC-column">&nbsp;</div>
-  <!--           <div class="discs" id="disc1">&nbsp;</div>
-            <div class="discs" id="disc2">&nbsp;</div>
-            <div class="discs" id="disc3">&nbsp;</div>
-            <div class="discs" id="disc4">&nbsp;</div>
-            <div class="discs" id="disc5">&nbsp;</div>
-            <div class="discs" id="disc6">&nbsp;</div>
-            <div class="discs" id="disc7">&nbsp;</div>
-            <div class="discs" id="disc8">&nbsp;</div> -->
-            <div class="tower-bases" id="towerC-base">&nbsp;</div> 
-        </div>
-    </section>
-<script src="./js/main.js"></script>
+    
+    
+    <section id="main">
+        <aside><h2>How To Play:</h2>
+            <p>Move all discs, from the first tower to the last tower, while stacking smaller 
+            discs only on larger discs.<p>Try to get as close to the minimum number of moves as possible 
+            in the shortest amount of time.</p>Click Reset after successfully completing a game or to
+            abort a game in process.<p style="text-align: center">Have fun!</p>
+            </p>
+        </aside>
+        <section id="game">
+            <section id="dashboard">
+                <section id="disc-selection">
+                    <section id="disc-selection-buttons">
+                        <button class="buttons" id="down-button">▼</button>
+                        <button class="buttons" id="up-button">▲</button>
+                    </section>
+                    <span id="number-of-discs">Discs: 8</span>
+                </section>
+                <section id="moves">
+                    <span id="minimum-moves">Minimum Moves: 255</span>
+                    <span id="your-moves">Your Moves: 0</span>
+                </section>                
+                <section id="reset-and-log">
+                    <button id="reset" class="buttons">Reset</button>
+                    <button id="log" class="buttons">Log</button>
+               </section>
+            </section>
+            <section class="tower-container">
+                <div class="towers" id="towerA">
+                    <div class="tower-columns" id="towerA-column"></div>
+                    <div class="tower-bases" id="towerA-base"></div>  
+                </div>
+                <div class="towers" id="towerB">
+                    <div class="tower-columns" id="towerB-column"></div>
+                    <div class="tower-bases" id="towerB-base"></div> 
+                </div>
+                <div class="towers" id="towerC">
+                    <div  class="tower-columns" id="towerC-column"></div>
+                    <div class="tower-bases" id="towerC-base"></div> 
+                </div>
+            </section>
+            <section class="info-container">
+            <div id="winner"></div>
+            <div id="status"></div>
+            </section>           
+        </section> <!-- End game section -->
+    </section> <!-- End main section -->
+    
+    <script src="./js/Disc.js"></script>
+    <script src="./js/Tower.js"></script>
+    <script src="./js/Gameboard.js"></script>
+    <script src="./js/main.js"></script>    
 </body>
 </html>

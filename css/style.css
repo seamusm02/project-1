@@ -7,16 +7,68 @@ header {
     font-family: 'Architects Daughter';
 }
 
+#main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+aside {
+    width: 300px;
+    text-align: justify;
+    text-justify: inter-word;
+    font-family: 'Architects Daughter';
+}
+
+#game {
+    display: flex;
+    flex-direction: column;
+}
 #dashboard {
-    background-color: LawnGreen;
+    display: flex;
+    flex-direction: row;
+    font-family: 'Architects Daughter';
+}
+
+#number-of-discs {
+    margin-left: 10px;
+}
+
+#moves {
+	padding-top: 8px;
+}
+
+#minimum-moves {
+	margin-left: 10px;
+}
+
+#your-moves {
+    margin-left: 20px;
+}
+
+#reset-and-log {
+	width: 150px;
+	margin: auto;
+}
+
+.buttons {
+    font: bold 13px Arial, sans-serif;
+    border-radius: 10px;
+    outline-style: none;
 }
 
 .tower-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: 100px;
+    height: 160px;
     /* background-color: DodgerBlue; */
+}
+
+.info-container {
+    height: 500px;
+    margin-top: 20px;
+    font-family: 'Architects Daughter';
 }
 
 .tower-container > #towerA, #towerB, #towerC {
@@ -24,7 +76,7 @@ header {
     flex-direction: column;
     /* background-color: #f1f1f1; */
     margin: 10px;
-    line-height: 300px;
+    height: 300px;
 }
 
 .tower-columns {
@@ -32,7 +84,6 @@ header {
     border-top-right-radius: 25px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: auto; /* Need to set this property on the column */
     width: 10px;
     background-color: DodgerBlue; 
 }
@@ -41,7 +92,7 @@ header {
     border-radius: 25px;
     margin-left: auto;
     margin-right: auto;
-    line-height: 10px;
+    height: 10px;
     width: 165px;
     background-color: DodgerBlue;
 }
@@ -50,7 +101,7 @@ header {
     border-radius: 25px;
     margin-left: auto;
     margin-right: auto;
-    line-height: 15px;
+    height: 15px;
 }
 
 #towerA-column {
@@ -63,45 +114,5 @@ header {
 
 #towerC-column {
     height: 135px;
-}
-
-#disc1 { 
-    width: 30px;
-    background-color: yellow;
-}
-
-#disc2 {
-    width: 45px;
-    background-color: blueviolet;
-}
-
-#disc3 {
-    width: 60px;
-    background-color: green;
-}
-
-#disc4 {
-    width: 75px;
-    background-color: red;
-}
-
-#disc5 {
-    width: 90px;
-    background-color: orange;
-}
-
-#disc6 {
-    width: 105px;
-    background-color: Chartreuse;
-}
-
-#disc7 {
-    width: 120px;
-    background-color: Magenta;
-}
-
-#disc8 {
-    width: 135px;
-    background-color: MediumBlue;
 }
 

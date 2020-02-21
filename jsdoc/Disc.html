@@ -73,7 +73,7 @@
 
     
 
-    <h3>Classes</h3><ul><li id="Disc-nav"><a href="Disc.html">Disc</a><ul class='methods'><li data-type="method" id="Disc-getColor-nav"><a href="Disc.html#getColor">getColor</a></li><li data-type="method" id="Disc-getWidth-nav"><a href="Disc.html#getWidth">getWidth</a></li></ul></li><li id="Gameboard-nav"><a href="Gameboard.html">Gameboard</a><ul class='methods'><li data-type="method" id="Gameboard-getNumberOfMoves-nav"><a href="Gameboard.html#getNumberOfMoves">getNumberOfMoves</a></li><li data-type="method" id="Gameboard-getTower-nav"><a href="Gameboard.html#getTower">getTower</a></li><li data-type="method" id="Gameboard-getWinningTime-nav"><a href="Gameboard.html#getWinningTime">getWinningTime</a></li><li data-type="method" id="Gameboard-isWinner-nav"><a href="Gameboard.html#isWinner">isWinner</a></li><li data-type="method" id="Gameboard-moveDisc-nav"><a href="Gameboard.html#moveDisc">moveDisc</a></li><li data-type="method" id="Gameboard-restartGame-nav"><a href="Gameboard.html#restartGame">restartGame</a></li></ul></li><li id="Tower-nav"><a href="Tower.html">Tower</a><ul class='methods'><li data-type="method" id="Tower-addDisc-nav"><a href="Tower.html#addDisc">addDisc</a></li><li data-type="method" id="Tower-getNumberOfDiscs-nav"><a href="Tower.html#getNumberOfDiscs">getNumberOfDiscs</a></li><li data-type="method" id="Tower-getPosition-nav"><a href="Tower.html#getPosition">getPosition</a></li><li data-type="method" id="Tower-getTopDisc-nav"><a href="Tower.html#getTopDisc">getTopDisc</a></li><li data-type="method" id="Tower-hasDisc-nav"><a href="Tower.html#hasDisc">hasDisc</a></li><li data-type="method" id="Tower-removeDisc-nav"><a href="Tower.html#removeDisc">removeDisc</a></li></ul></li></ul><h3 id="global-nav">Global</h3><ul><li><a href="global.html#include">include</a></li></ul>
+    <h3>Classes</h3><ul><li id="Disc-nav"><a href="Disc.html">Disc</a><ul class='methods'><li data-type="method" id="Disc-_setID-nav"><a href="Disc.html#_setID">_setID</a></li><li data-type="method" id="Disc-getColor-nav"><a href="Disc.html#getColor">getColor</a></li><li data-type="method" id="Disc-getHeight-nav"><a href="Disc.html#getHeight">getHeight</a></li><li data-type="method" id="Disc-getID-nav"><a href="Disc.html#getID">getID</a></li><li data-type="method" id="Disc-getWidth-nav"><a href="Disc.html#getWidth">getWidth</a></li></ul></li><li id="Gameboard-nav"><a href="Gameboard.html">Gameboard</a><ul class='methods'><li data-type="method" id="Gameboard-getNumberOfDiscs-nav"><a href="Gameboard.html#getNumberOfDiscs">getNumberOfDiscs</a></li><li data-type="method" id="Gameboard-getNumberOfMoves-nav"><a href="Gameboard.html#getNumberOfMoves">getNumberOfMoves</a></li><li data-type="method" id="Gameboard-getTower-nav"><a href="Gameboard.html#getTower">getTower</a></li><li data-type="method" id="Gameboard-getWinningTime-nav"><a href="Gameboard.html#getWinningTime">getWinningTime</a></li><li data-type="method" id="Gameboard-isWinner-nav"><a href="Gameboard.html#isWinner">isWinner</a></li><li data-type="method" id="Gameboard-moveDisc-nav"><a href="Gameboard.html#moveDisc">moveDisc</a></li><li data-type="method" id="Gameboard-restartGame-nav"><a href="Gameboard.html#restartGame">restartGame</a></li><li data-type="method" id="Gameboard-startTime-nav"><a href="Gameboard.html#startTime">startTime</a></li></ul></li><li id="Tower-nav"><a href="Tower.html">Tower</a><ul class='methods'><li data-type="method" id="Tower-addBottomDisc-nav"><a href="Tower.html#addBottomDisc">addBottomDisc</a></li><li data-type="method" id="Tower-addTopDisc-nav"><a href="Tower.html#addTopDisc">addTopDisc</a></li><li data-type="method" id="Tower-getDiscs-nav"><a href="Tower.html#getDiscs">getDiscs</a></li><li data-type="method" id="Tower-getNumberOfDiscs-nav"><a href="Tower.html#getNumberOfDiscs">getNumberOfDiscs</a></li><li data-type="method" id="Tower-getPosition-nav"><a href="Tower.html#getPosition">getPosition</a></li><li data-type="method" id="Tower-getTopDisc-nav"><a href="Tower.html#getTopDisc">getTopDisc</a></li><li data-type="method" id="Tower-hasDisc-nav"><a href="Tower.html#hasDisc">hasDisc</a></li><li data-type="method" id="Tower-removeBottomDisc-nav"><a href="Tower.html#removeBottomDisc">removeBottomDisc</a></li><li data-type="method" id="Tower-removeTopDisc-nav"><a href="Tower.html#removeTopDisc">removeTopDisc</a></li></ul></li></ul><h3 id="global-nav">Global</h3><ul><li><a href="global.html#displayDiscs">displayDiscs</a></li><li><a href="global.html#updateMinNumberOfMovesDisplay">updateMinNumberOfMovesDisplay</a></li><li><a href="global.html#updateNumberOfDiscsDisplay">updateNumberOfDiscsDisplay</a></li></ul>
   </nav>
 
   <div id="main">
@@ -119,7 +119,7 @@
       </svg>
     </a>
     <h4 class="name" id="Disc">
-      <span class="type-signature"></span>new Disc<span class="signature">(width, color)</span><span class="type-signature"></span>
+      <span class="type-signature"></span>new Disc<span class="signature">(id, width, height, color)</span><span class="type-signature"></span>
     </h4>
   </span>
 
@@ -161,6 +161,35 @@
     
       <tr>
         
+          <td class="name"><code>id</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          ID of the disc
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
           <td class="name"><code>width</code></td>
         
 
@@ -183,6 +212,35 @@
 
         <td class="description last">
           Width of the disc in px
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>height</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      number
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          Height of the disc in px
           
         </td>
       </tr>
@@ -255,7 +313,7 @@
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="Disc.js.html">Disc.js</a>, <a href="Disc.js.html#line20">line 20</a>
+          <a href="Disc.js.html">Disc.js</a>, <a href="Disc.js.html#line23">line 23</a>
         </li>
       </ul>
     </dd>
@@ -298,6 +356,152 @@
 
     
       <h3 class="subsection-title">Methods</h3>
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#_setID">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="_setID">
+      <span class="type-signature"></span>_setID<span class="signature">(id)</span><span class="type-signature"></span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    Set the disc ID
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>id</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          The string ID of the Disc object
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="Disc.js.html">Disc.js</a>, <a href="Disc.js.html#line35">line 35</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       
         
@@ -364,7 +568,189 @@
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="Disc.js.html">Disc.js</a>, <a href="Disc.js.html#line84">line 84</a>
+          <a href="Disc.js.html">Disc.js</a>, <a href="Disc.js.html#line151">line 151</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#getHeight">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="getHeight">
+      <span class="type-signature"></span>getHeight<span class="signature">()</span><span class="type-signature"> &rarr; {number}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    Return the height of the Disc object
+  </div>
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="Disc.js.html">Disc.js</a>, <a href="Disc.js.html#line119">line 119</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#getID">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="getID">
+      <span class="type-signature"></span>getID<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    Return the Disc object's ID
+  </div>
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="Disc.js.html">Disc.js</a>, <a href="Disc.js.html#line56">line 56</a>
         </li>
       </ul>
     </dd>
@@ -412,7 +798,7 @@
 
 
   <div class="description">
-    Get the width of a Disc object
+    Get the width of the Disc object
   </div>
 
 
@@ -455,7 +841,7 @@
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="Disc.js.html">Disc.js</a>, <a href="Disc.js.html#line52">line 52</a>
+          <a href="Disc.js.html">Disc.js</a>, <a href="Disc.js.html#line88">line 88</a>
         </li>
       </ul>
     </dd>

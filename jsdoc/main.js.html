@@ -75,7 +75,7 @@
 
     
 
-    <h3>Classes</h3><ul><li id="Disc-nav"><a href="Disc.html">Disc</a><ul class='methods'><li data-type="method" id="Disc-getColor-nav"><a href="Disc.html#getColor">getColor</a></li><li data-type="method" id="Disc-getWidth-nav"><a href="Disc.html#getWidth">getWidth</a></li></ul></li><li id="Gameboard-nav"><a href="Gameboard.html">Gameboard</a><ul class='methods'><li data-type="method" id="Gameboard-getNumberOfMoves-nav"><a href="Gameboard.html#getNumberOfMoves">getNumberOfMoves</a></li><li data-type="method" id="Gameboard-getTower-nav"><a href="Gameboard.html#getTower">getTower</a></li><li data-type="method" id="Gameboard-getWinningTime-nav"><a href="Gameboard.html#getWinningTime">getWinningTime</a></li><li data-type="method" id="Gameboard-isWinner-nav"><a href="Gameboard.html#isWinner">isWinner</a></li><li data-type="method" id="Gameboard-moveDisc-nav"><a href="Gameboard.html#moveDisc">moveDisc</a></li><li data-type="method" id="Gameboard-restartGame-nav"><a href="Gameboard.html#restartGame">restartGame</a></li></ul></li><li id="Tower-nav"><a href="Tower.html">Tower</a><ul class='methods'><li data-type="method" id="Tower-addDisc-nav"><a href="Tower.html#addDisc">addDisc</a></li><li data-type="method" id="Tower-getNumberOfDiscs-nav"><a href="Tower.html#getNumberOfDiscs">getNumberOfDiscs</a></li><li data-type="method" id="Tower-getPosition-nav"><a href="Tower.html#getPosition">getPosition</a></li><li data-type="method" id="Tower-getTopDisc-nav"><a href="Tower.html#getTopDisc">getTopDisc</a></li><li data-type="method" id="Tower-hasDisc-nav"><a href="Tower.html#hasDisc">hasDisc</a></li><li data-type="method" id="Tower-removeDisc-nav"><a href="Tower.html#removeDisc">removeDisc</a></li></ul></li></ul><h3 id="global-nav">Global</h3><ul><li><a href="global.html#include">include</a></li></ul>
+    <h3>Classes</h3><ul><li id="Disc-nav"><a href="Disc.html">Disc</a><ul class='methods'><li data-type="method" id="Disc-_setID-nav"><a href="Disc.html#_setID">_setID</a></li><li data-type="method" id="Disc-getColor-nav"><a href="Disc.html#getColor">getColor</a></li><li data-type="method" id="Disc-getHeight-nav"><a href="Disc.html#getHeight">getHeight</a></li><li data-type="method" id="Disc-getID-nav"><a href="Disc.html#getID">getID</a></li><li data-type="method" id="Disc-getWidth-nav"><a href="Disc.html#getWidth">getWidth</a></li></ul></li><li id="Gameboard-nav"><a href="Gameboard.html">Gameboard</a><ul class='methods'><li data-type="method" id="Gameboard-getNumberOfDiscs-nav"><a href="Gameboard.html#getNumberOfDiscs">getNumberOfDiscs</a></li><li data-type="method" id="Gameboard-getNumberOfMoves-nav"><a href="Gameboard.html#getNumberOfMoves">getNumberOfMoves</a></li><li data-type="method" id="Gameboard-getTower-nav"><a href="Gameboard.html#getTower">getTower</a></li><li data-type="method" id="Gameboard-getWinningTime-nav"><a href="Gameboard.html#getWinningTime">getWinningTime</a></li><li data-type="method" id="Gameboard-isWinner-nav"><a href="Gameboard.html#isWinner">isWinner</a></li><li data-type="method" id="Gameboard-moveDisc-nav"><a href="Gameboard.html#moveDisc">moveDisc</a></li><li data-type="method" id="Gameboard-restartGame-nav"><a href="Gameboard.html#restartGame">restartGame</a></li><li data-type="method" id="Gameboard-startTime-nav"><a href="Gameboard.html#startTime">startTime</a></li></ul></li><li id="Tower-nav"><a href="Tower.html">Tower</a><ul class='methods'><li data-type="method" id="Tower-addBottomDisc-nav"><a href="Tower.html#addBottomDisc">addBottomDisc</a></li><li data-type="method" id="Tower-addTopDisc-nav"><a href="Tower.html#addTopDisc">addTopDisc</a></li><li data-type="method" id="Tower-getDiscs-nav"><a href="Tower.html#getDiscs">getDiscs</a></li><li data-type="method" id="Tower-getNumberOfDiscs-nav"><a href="Tower.html#getNumberOfDiscs">getNumberOfDiscs</a></li><li data-type="method" id="Tower-getPosition-nav"><a href="Tower.html#getPosition">getPosition</a></li><li data-type="method" id="Tower-getTopDisc-nav"><a href="Tower.html#getTopDisc">getTopDisc</a></li><li data-type="method" id="Tower-hasDisc-nav"><a href="Tower.html#hasDisc">hasDisc</a></li><li data-type="method" id="Tower-removeBottomDisc-nav"><a href="Tower.html#removeBottomDisc">removeBottomDisc</a></li><li data-type="method" id="Tower-removeTopDisc-nav"><a href="Tower.html#removeTopDisc">removeTopDisc</a></li></ul></li></ul><h3 id="global-nav">Global</h3><ul><li><a href="global.html#displayDiscs">displayDiscs</a></li><li><a href="global.html#updateMinNumberOfMovesDisplay">updateMinNumberOfMovesDisplay</a></li><li><a href="global.html#updateNumberOfDiscsDisplay">updateNumberOfDiscsDisplay</a></li></ul>
   </nav>
 
   <div id="main">
@@ -94,45 +94,163 @@
  * @file This is the entry point into the application
  */
 
-// Include class files and test file
-include("./js/Disc.js");
-include("./js/Tower.js");
-include("./js/Gameboard.js");
-include("./js/test.js");
+const TOWER_COLUMN_HEIGHT = 135;                  // Height of tower column (not including base)
+const DISC_HEIGHT = 15;                           // Height of a disc in px
+const TOWER_COLUMN_BASE_HEIGHT = DISC_HEIGHT - 5; // Height of tower base
 
+// Target the disc options up/down buttons
+const buttonDown = document.querySelector("#down-button");
+const buttonUp = document.querySelector("#up-button");
 
+// Target the number of discs display
+const numberOfDiscsDisplay = document.querySelector("#number-of-discs");
 
+// Target the minimum number of moves to win display
+const minNumberOfMovesDisplay = document.querySelector("#minimum-moves");
 
+// Define our discs with width, height, and color
+const disc1 = new Disc('disc1', 30,  DISC_HEIGHT, 'GreenYellow'); 
+const disc2 = new Disc('disc2', 45,  DISC_HEIGHT, 'Indigo');
+const disc3 = new Disc('disc3', 60,  DISC_HEIGHT, 'Green');
+const disc4 = new Disc('disc4', 75,  DISC_HEIGHT, 'FireBrick');
+const disc5 = new Disc('disc5', 90,  DISC_HEIGHT, 'DarkSalmon');
+const disc6 = new Disc('disc6', 105, DISC_HEIGHT, 'DarkSlateGray');
+const disc7 = new Disc('disc7', 120, DISC_HEIGHT, 'DeepPink');
+const disc8 = new Disc('disc8', 135, DISC_HEIGHT, 'DarkSlateBlue');
 
+// Initialize the game board with the first 3 discs on tower A
+const gameBoard = new Gameboard([disc1, disc2, disc3]);
 
-
-
-
-
-
-
-
-
-
-
+updateNumberOfDiscsDisplay();    // Update the number of discs display
+updateMinNumberOfMovesDisplay(); // Update the minimum number of moves to win display
 
 /**
- * Include external files into the main file in order to reference only one src in index.html 
- * &lt;br>&lt;br> 
- * Reference: [How to include a JavaScript file in another JavaScript file]{@link https://www.geeksforgeeks.org/how-to-include-a-javascript-file-in-another-javascript-file/}
- * 
- * @param {string} file Path to include file 
-*/
-function include(file) { 
-  
-    let script  = document.createElement('script'); 
-    script.src  = file; 
-    script.type = 'text/javascript'; 
-    script.defer = false; 
+ * Decrease the number of discs on tower A if there are more than 3
+ */
+buttonDown.addEventListener("click", () => {
+    
+    // Get number of discs on tower A
+    let numberOfDiscs = gameBoard.getTower("A").getNumberOfDiscs();
+
+    // Only decrease the number of discs on tower A if we have more than 3
+    if (numberOfDiscs > 3) {
         
-    document.getElementsByTagName('head').item(0).appendChild(script); 
-  
-}</code></pre>
+        // Remove a disc from the bottom of tower A object
+        gameBoard.getTower("A").removeBottomDisc(); 
+        //removeBottomDisc(towerID);
+
+        updateNumberOfDiscsDisplay();    // Update the number of discs display
+        updateMinNumberOfMovesDisplay(); // Update the minimum number of moves to win display
+    }
+});
+
+/**
+ * Increase the number of discs on tower A if there are fewer than 8
+ */
+buttonUp.addEventListener("click", () => {
+        
+    // Get number of discs on tower A
+    let numberOfDiscs = gameBoard.getTower("A").getNumberOfDiscs();
+
+    // Only increase the number of discs on tower A if we have fewer than 8
+    if (numberOfDiscs &lt; 8) {
+        
+        switch (numberOfDiscs) {
+            
+            case 3: gameBoard.getTower("A").addBottomDisc(disc4); break;
+            case 4: gameBoard.getTower("A").addBottomDisc(disc5); break;
+            case 5: gameBoard.getTower("A").addBottomDisc(disc6); break;
+            case 6: gameBoard.getTower("A").addBottomDisc(disc7); break;
+            case 7: gameBoard.getTower("A").addBottomDisc(disc8); break;
+        }
+        
+
+        updateNumberOfDiscsDisplay();    // Update the number of discs display
+        updateMinNumberOfMovesDisplay(); // Update the minimum number of moves to win display         
+    }
+});
+
+/**
+ * Update the number of discs in the display
+ * 
+ * @return {string}
+ */
+function updateNumberOfDiscsDisplay(){
+    const numberOfDiscs = gameBoard.getTower("A").getNumberOfDiscs();
+    
+    numberOfDiscsDisplay.textContent = "Discs: " + numberOfDiscs.toString();
+}
+
+/**
+ * Update the Minimum number of moves to win display for a given number of discs
+ * 
+ * @return {string}
+ */
+function updateMinNumberOfMovesDisplay() {
+    const numberOfDiscs = gameBoard.getTower("A").getNumberOfDiscs();
+
+    minNumberOfMovesDisplay.textContent = "Minimum Moves To Win: " + 
+                                           (Math.pow(2, numberOfDiscs) - 1).toString();    
+}
+
+/**
+ * Display discs on their cooresponding towers
+ */
+function displayDiscs() {
+
+   // Display discs on towers and adjust tower column heights as necessary
+   for (let i = 0; i &lt; 3; i++) {
+   
+        let towerPosition = "";
+        let towerID = "#towerX";
+        let towerColumnID = "#towerX-column";
+        let towerBaseID = "#towerX-base";
+    
+        switch (i) {
+            case 0: 
+                towerPosition = "A";
+                towerID = towerID.replace(/X/, "A");
+                towerColumnID = towerColumnID.replace(/X/, "A");
+                towerBaseID = towerBaseID.replace(/X/, "A");
+                break;
+            
+            case 1: 
+                towerPosition = "B";    
+                towerID = towerID.replace(/X/, "B");
+                towerColumnID = towerColumnID.replace(/X/, "B");
+                towerBaseID = towerBaseID.replace(/X/, "B");
+                break;
+
+            case 2:
+                towerPosition = "C";
+                towerID = towerID.replace(/X/, "C");
+                towerColumnID = towerColumnID.replace(/X/, "C");
+                towerBaseID = towerBaseID.replace(/X/, "C");
+                break;
+        }
+        
+         let numberOfTowerDiscs = gameBoard.getTower(towerPosition).getNumberOfDiscs();
+
+        // Insert the disc DIV above the tower base DIV
+        for (let j = 1; j &lt;= numberOfTowerDiscs; j++) {
+
+            let discDiv = document.createElement("div"); 
+            discDiv.setAttribute("class", "discs");
+            discDiv.setAttribute("id", "disc" + j.toString());
+                
+            let towerDiv = document.querySelector(towerID);
+            let towerBaseDiv = document.querySelector(towerBaseID);                
+            towerDiv.insertBefore(discDiv, towerBaseDiv);
+        } 
+            
+        let columnDivHeight = TOWER_COLUMN_HEIGHT - (numberOfTowerDiscs * DISC_HEIGHT);
+        
+        let towerColumnDiv = document.querySelector(towerColumnID);
+        towerColumnDiv.setAttribute("style", `height: ${columnDivHeight}px`);
+
+    }
+}
+</code></pre>
   </article>
 </section>
 

@@ -75,7 +75,7 @@
 
     
 
-    <h3>Classes</h3><ul><li id="Disc-nav"><a href="Disc.html">Disc</a><ul class='methods'><li data-type="method" id="Disc-getColor-nav"><a href="Disc.html#getColor">getColor</a></li><li data-type="method" id="Disc-getWidth-nav"><a href="Disc.html#getWidth">getWidth</a></li></ul></li><li id="Gameboard-nav"><a href="Gameboard.html">Gameboard</a><ul class='methods'><li data-type="method" id="Gameboard-getNumberOfMoves-nav"><a href="Gameboard.html#getNumberOfMoves">getNumberOfMoves</a></li><li data-type="method" id="Gameboard-getTower-nav"><a href="Gameboard.html#getTower">getTower</a></li><li data-type="method" id="Gameboard-getWinningTime-nav"><a href="Gameboard.html#getWinningTime">getWinningTime</a></li><li data-type="method" id="Gameboard-isWinner-nav"><a href="Gameboard.html#isWinner">isWinner</a></li><li data-type="method" id="Gameboard-moveDisc-nav"><a href="Gameboard.html#moveDisc">moveDisc</a></li><li data-type="method" id="Gameboard-restartGame-nav"><a href="Gameboard.html#restartGame">restartGame</a></li></ul></li><li id="Tower-nav"><a href="Tower.html">Tower</a><ul class='methods'><li data-type="method" id="Tower-addDisc-nav"><a href="Tower.html#addDisc">addDisc</a></li><li data-type="method" id="Tower-getNumberOfDiscs-nav"><a href="Tower.html#getNumberOfDiscs">getNumberOfDiscs</a></li><li data-type="method" id="Tower-getPosition-nav"><a href="Tower.html#getPosition">getPosition</a></li><li data-type="method" id="Tower-getTopDisc-nav"><a href="Tower.html#getTopDisc">getTopDisc</a></li><li data-type="method" id="Tower-hasDisc-nav"><a href="Tower.html#hasDisc">hasDisc</a></li><li data-type="method" id="Tower-removeDisc-nav"><a href="Tower.html#removeDisc">removeDisc</a></li></ul></li></ul><h3 id="global-nav">Global</h3><ul><li><a href="global.html#include">include</a></li></ul>
+    <h3>Classes</h3><ul><li id="Disc-nav"><a href="Disc.html">Disc</a><ul class='methods'><li data-type="method" id="Disc-_setID-nav"><a href="Disc.html#_setID">_setID</a></li><li data-type="method" id="Disc-getColor-nav"><a href="Disc.html#getColor">getColor</a></li><li data-type="method" id="Disc-getHeight-nav"><a href="Disc.html#getHeight">getHeight</a></li><li data-type="method" id="Disc-getID-nav"><a href="Disc.html#getID">getID</a></li><li data-type="method" id="Disc-getWidth-nav"><a href="Disc.html#getWidth">getWidth</a></li></ul></li><li id="Gameboard-nav"><a href="Gameboard.html">Gameboard</a><ul class='methods'><li data-type="method" id="Gameboard-getNumberOfDiscs-nav"><a href="Gameboard.html#getNumberOfDiscs">getNumberOfDiscs</a></li><li data-type="method" id="Gameboard-getNumberOfMoves-nav"><a href="Gameboard.html#getNumberOfMoves">getNumberOfMoves</a></li><li data-type="method" id="Gameboard-getTower-nav"><a href="Gameboard.html#getTower">getTower</a></li><li data-type="method" id="Gameboard-getWinningTime-nav"><a href="Gameboard.html#getWinningTime">getWinningTime</a></li><li data-type="method" id="Gameboard-isWinner-nav"><a href="Gameboard.html#isWinner">isWinner</a></li><li data-type="method" id="Gameboard-moveDisc-nav"><a href="Gameboard.html#moveDisc">moveDisc</a></li><li data-type="method" id="Gameboard-restartGame-nav"><a href="Gameboard.html#restartGame">restartGame</a></li><li data-type="method" id="Gameboard-startTime-nav"><a href="Gameboard.html#startTime">startTime</a></li></ul></li><li id="Tower-nav"><a href="Tower.html">Tower</a><ul class='methods'><li data-type="method" id="Tower-addBottomDisc-nav"><a href="Tower.html#addBottomDisc">addBottomDisc</a></li><li data-type="method" id="Tower-addTopDisc-nav"><a href="Tower.html#addTopDisc">addTopDisc</a></li><li data-type="method" id="Tower-getDiscs-nav"><a href="Tower.html#getDiscs">getDiscs</a></li><li data-type="method" id="Tower-getNumberOfDiscs-nav"><a href="Tower.html#getNumberOfDiscs">getNumberOfDiscs</a></li><li data-type="method" id="Tower-getPosition-nav"><a href="Tower.html#getPosition">getPosition</a></li><li data-type="method" id="Tower-getTopDisc-nav"><a href="Tower.html#getTopDisc">getTopDisc</a></li><li data-type="method" id="Tower-hasDisc-nav"><a href="Tower.html#hasDisc">hasDisc</a></li><li data-type="method" id="Tower-removeBottomDisc-nav"><a href="Tower.html#removeBottomDisc">removeBottomDisc</a></li><li data-type="method" id="Tower-removeTopDisc-nav"><a href="Tower.html#removeTopDisc">removeTopDisc</a></li></ul></li></ul><h3 id="global-nav">Global</h3><ul><li><a href="global.html#displayDiscs">displayDiscs</a></li><li><a href="global.html#updateMinNumberOfMovesDisplay">updateMinNumberOfMovesDisplay</a></li><li><a href="global.html#updateNumberOfDiscsDisplay">updateNumberOfDiscsDisplay</a></li></ul>
   </nav>
 
   <div id="main">
@@ -97,6 +97,7 @@
 class Disc {
     
     // Private properties
+    _id = "";     // ID of disc (string value)
     _width = 0;   // Width of a disc in px
     _height = 0;  // Height of a disc in px
     _color = '';  // String representation of disc color: rgb, hex, or named color
@@ -106,12 +107,46 @@ class Disc {
      * 
      * @constructor
      * 
-     * @param {number} width Width of the disc in px
-     * @param {string} color Color of the disc in hex, rgb, or name
+     * @param {string} id     ID of the disc
+     * @param {number} width  Width of the disc in px
+     * @param {number} height Height of the disc in px
+     * @param {string} color  Color of the disc in hex, rgb, or name
      */
-    constructor(width, color) {
+    constructor(id, width, height, color) {
+        this._setID = (id);
         this._setWidth(width);
+        this._setHeight(height);
         this._setColor(color);
+    }
+    
+    /**
+     * Set the disc ID
+     *
+     * @param {string} id The string ID of the Disc object 
+     */
+    _setID(id) {
+        try {
+            let errMsg = `In call to ${this.constructor.name}.setID(id)...\n`;
+
+            if (typeof id !== "string") {
+                errMsg+= `\tid not string! >> '${id}'`;
+                throw errMsg;
+            }
+
+            this._id = id;
+        }
+        catch (err) {
+            console.error(err);
+        }    
+    }
+
+    /**
+     * Return the Disc object's ID
+     * 
+     * @return {string}
+     */
+    getID() {
+        return this._id;
     }
     
     /**
@@ -123,11 +158,12 @@ class Disc {
     _setWidth(width) {
         try {
             
-            let isErr = false;
             let errMsg = `In call to ${this.constructor.name}.setWidth(width)...\n`;
             
-            if (isNaN(width))  {errMsg += `\twidth not numeric! >> '${width}'`; isErr = true;}
-            if (isErr) throw errMsg;
+            if (isNaN(width))  {
+                errMsg += `\twidth not numeric! >> '${width}'`; 
+                throw errMsg;
+            }
             
             this._width = width;
         }
@@ -137,12 +173,43 @@ class Disc {
     }
 
     /**
-     * Get the width of a Disc object
+     * Get the width of the Disc object
      * 
      * @return {number}
      */
     getWidth() {
         return this._width;
+    }
+
+    /**
+     * Set the height of the Disc object
+     *
+     * @ignore
+     * @param {number} height
+     */
+    _setHeight(height) {
+        try {
+            
+            let errMsg = `In call to ${this.constructor.name}.setHeight(height)...\n`;
+            
+            if (isNaN(height))  {
+                errMsg += `\theight not numeric! >> '${height}'`; 
+                throw errMsg;
+            }
+            
+            this._height = height;
+        }
+        catch (err) {
+            console.error(err);     
+        }
+    }
+
+    /**
+     * Return the height of the Disc object
+     * @return {number}
+     */
+    getHeight() {
+        return this._height;
     }
     
     /**
